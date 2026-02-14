@@ -1,26 +1,42 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-surface: #0c0c0e;
+  --color-surface-elevated: #141416;
+  --color-surface-card: #1a1a1e;
+  --color-border: #2a2a2e;
+  --color-muted: #71717a;
+  --color-accent: #22d3ee;
+  --color-accent-dim: rgba(34, 211, 238, 0.15);
+  --color-text: #fafafa;
+  --color-text-muted: #a1a1aa;
+  --font-heading: var(--font-syne), system-ui, sans-serif;
+  --font-body: var(--font-dm-sans), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* Subtle grid background */
+.bg-mesh {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, var(--color-accent-dim), transparent),
+    linear-gradient(to bottom, var(--color-surface) 0%, var(--color-surface-elevated) 100%);
+}
+
+/* Glow for accent elements */
+.glow-accent {
+  box-shadow: 0 0 40px -10px var(--color-accent);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-accent-dim);
+  color: var(--color-accent);
 }
